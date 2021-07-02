@@ -1,4 +1,4 @@
-package me.taggerapp.android
+package me.taggerapp.android.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
