@@ -8,7 +8,8 @@
     <color name="green_400">#52b69a</color>
     <color name="green_600">#34a0a4</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>w
 
     <!--Base Components-->
+    <color name="nav_bar">@color/blue_500</color>
 </resources>
