@@ -6,6 +6,7 @@ import android.widget.Toast
 import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivitySignUpBinding
 import me.taggerapp.android.helpers.hideKeyboard
+import me.taggerapp.android.home.HomeActivity
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -41,7 +42,7 @@ class SignUpActivity : AppCompatActivity() {
         val inputPin = binding.inputLayoutPin
         val pinText = inputPin.editText?.text?.toString()
         val isValidPin = viewController.submit(pinText)
-        
+
         if (isValidPin) {
             inputPin.error = null
             hideKeyboard(inputPin)
@@ -53,6 +54,8 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun navigateToHome() {
         Toast.makeText(this, getString(R.string.registered), Toast.LENGTH_SHORT).show()
-        //TODO: Crear intent y navegar a pantalla de inicio
+        val homeIntent = HomeActivity.createIntent(this)
+        startActivity(homeIntent)
+        finish()
     }
 }
