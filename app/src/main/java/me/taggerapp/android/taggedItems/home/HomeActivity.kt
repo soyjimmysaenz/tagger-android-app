@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun requestItems() {
-        val taggedItemModels = viewController.getTaggedItems()
+        val taggedItemModels = viewController.loadItems()
         Log.d(TAG, "Tagged items: $taggedItemModels")
         //TODO: cargar data en adapter->recyclerview
     }
