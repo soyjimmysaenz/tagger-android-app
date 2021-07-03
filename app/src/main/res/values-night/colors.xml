@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Base Components-->
+    <color name="title_default">@color/blue_500</color>
+</resources>

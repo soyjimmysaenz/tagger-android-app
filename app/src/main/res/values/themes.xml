@@ -24,4 +24,8 @@
         <item name="colorPrimary">@color/blue_500</item>
         <item name="colorOnPrimary">@color/white</item>
     </style>
+
+    <style name="Theme.Tagger.Title1" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">@color/title_default</item>
+    </style>
 </resources>

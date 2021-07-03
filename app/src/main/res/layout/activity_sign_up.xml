@@ -6,6 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".signIn.SignUpActivity">
 
-    
+    <TextView
+        android:id="@+id/textViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tag"
+        style="@style/TextAppearance.MaterialComponents.Headline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textViewTitle"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        style="@style/Theme.Tagger.Title1"
+        app:layout_constraintTop_toBottomOf="@id/textViewLogo"
+        app:layout_constraintBottom_toTopOf="@id/textViewDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_description"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/spacing_2x"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@id/inputLayoutPin"
+        app:layout_constraintEnd_toEndOf="@id/inputLayoutPin"
+        app:layout_constraintBottom_toTopOf="@id/inputLayoutPin"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutPin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/pin_placeholder"
+        app:counterEnabled="true"
+        app:counterMaxLength="6"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_marginTop="@dimen/spacing_3x"
+        android:layout_marginStart="@dimen/spacing_3x"
+        android:layout_marginEnd="@dimen/spacing_3x"
+        app:layout_constraintTop_toBottomOf="@id/textViewDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonSubmit">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        android:layout_marginTop="@dimen/spacing_2x"
+        android:padding="@dimen/spacing_2x"
+        app:layout_constraintTop_toBottomOf="@id/inputLayoutPin"
+        app:layout_constraintStart_toStartOf="@id/inputLayoutPin"
+        app:layout_constraintEnd_toEndOf="@id/inputLayoutPin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

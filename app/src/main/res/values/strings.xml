@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tagger</string>
+    <string name="tag">🏷</string>
+    <string name="pin_placeholder">Tu PIN de 6 dígitos</string>
+    <string name="start">Empezar</string>
+    <string name="app_description">Con Tagger podés etiquetar tu vida, desde un lápiz hasta un viaje. Empecemos configurando tu PIN.</string>
 </resources>

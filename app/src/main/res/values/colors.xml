@@ -12,4 +12,5 @@
 
     <!--Base Components-->
     <color name="nav_bar">@color/blue_500</color>
+    <color name="title_default">@color/blue_900</color>
 </resources>
