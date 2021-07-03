@@ -4,13 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import me.taggerapp.android.databinding.ActivityHomeBinding
 import me.taggerapp.android.taggedItems.ModuleFactory
+import me.taggerapp.android.taggedItems.TaggedItem
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private val taggedItemsAdapter: TaggedItemsListAdapter by lazy {
+        TaggedItemsListAdapter(::onTaggedItemSelected)
+    }
     private val viewController: HomeController by lazy {
         ModuleFactory.getHomeController()
     }
@@ -40,12 +46,21 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        //TODO: configurar RecyclerView, Adapter, etc.
+        with (binding) {
+            recyclerViewItems.adapter = taggedItemsAdapter
+            recyclerViewItems.layoutManager = LinearLayoutManager(this@HomeActivity)
+            recyclerViewItems.setHasFixedSize(true)
+        }
     }
 
     private fun requestItems() {
         val taggedItemModels = viewController.loadItems()
-        Log.d(TAG, "Tagged items: $taggedItemModels")
-        //TODO: cargar data en adapter->recyclerview
+        taggedItemsAdapter.update(taggedItemModels)
+    }
+
+    private fun onTaggedItemSelected(taggedItem: TaggedItem) {
+        Log.d(TAG, "Tagged item selected: $taggedItem")
+        Toast.makeText(this, "Seleccionaste ${taggedItem.title}", Toast.LENGTH_SHORT).show()
+        //TODO: presentar dialog con detalle de item
     }
 }
