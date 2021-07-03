@@ -44,6 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         
         if (isValidPin) {
             inputPin.error = null
+            hideKeyboard(inputPin)
             navigateToHome()
         } else {
             inputPin.error = getString(R.string.error_validating_pin)
