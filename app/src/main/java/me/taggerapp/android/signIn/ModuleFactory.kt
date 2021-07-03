@@ -13,4 +13,11 @@ object ModuleFactory {
 
         return SignUpController(validateUserPin, saveUserPin)
     }
+
+    internal fun getStartAppController(context: Context): StartAppController {
+        val preferencesProvider: PreferencesProvider = SharedPreferencesProviderImpl(context)
+        val getUserPin = GetUserPin(preferencesProvider)
+
+        return StartAppController(getUserPin)
+    }
 }

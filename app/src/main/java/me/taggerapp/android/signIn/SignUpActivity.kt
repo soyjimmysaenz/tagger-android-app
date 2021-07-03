@@ -1,5 +1,7 @@
 package me.taggerapp.android.signIn
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +11,12 @@ import me.taggerapp.android.helpers.hideKeyboard
 import me.taggerapp.android.taggedItems.home.HomeActivity
 
 class SignUpActivity : AppCompatActivity() {
+
+    companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, SignUpActivity::class.java)
+        }
+    }
 
     private lateinit var binding: ActivitySignUpBinding
     private val viewController: SignUpController by lazy {

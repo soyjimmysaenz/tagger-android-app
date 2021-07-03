@@ -11,12 +11,14 @@
         android:theme="@style/Theme.Tagger">
         <activity android:name=".signIn.SignUpActivity"
             android:windowSoftInputMode="stateVisible|adjustResize">
+        </activity>
+        <activity android:name=".taggedItems.home.HomeActivity" />
+        <activity android:name=".signIn.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".taggedItems.home.HomeActivity" />
     </application>
 
 </manifest>
