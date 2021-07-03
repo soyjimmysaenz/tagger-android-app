@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/spacing_2x">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/viewImage"
+        android:layout_width="@dimen/item_image_size"
+        android:layout_height="@dimen/item_image_size"
+        app:cardBackgroundColor="@color/gray_200"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="@dimen/spacing_base"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Headline5"
+        android:layout_marginStart="@dimen/spacing_2x"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/viewImage"
+        app:layout_constraintEnd_toStartOf="@id/textViewRating"
+        app:layout_constraintBottom_toTopOf="@id/textViewDescription"
+        tools:text="Mi título de elemento"
+        />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginTop="@dimen/spacing_2n"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="@id/textViewTitle"
+        app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="@tools:sample/lorem/random"
+        />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_marginStart="@dimen/spacing_base"
+        app:layout_constraintTop_toTopOf="@id/textViewTitle"
+        app:layout_constraintBottom_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toEndOf="@id/textViewTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="5⭐️"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
