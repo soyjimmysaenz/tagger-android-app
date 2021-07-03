@@ -6,6 +6,7 @@ import me.taggerapp.android.BuildConfig
 
 interface PreferencesProvider {
     fun saveString(key: String, value: String)
+    fun getString(key: String): String?
 }
 
 class SharedPreferencesProviderImpl(context: Context): PreferencesProvider {
@@ -20,5 +21,9 @@ class SharedPreferencesProviderImpl(context: Context): PreferencesProvider {
 
     override fun saveString(key: String, value: String) {
         prefsEditor.putString(key, value).apply()
+    }
+
+    override fun getString(key: String): String? {
+        return prefs.getString(key, null)
     }
 }
