@@ -12,7 +12,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
     private val viewController: SignUpController by lazy {
-        ModuleFactory.getSignUpController()
+        ModuleFactory.getSignUpController(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

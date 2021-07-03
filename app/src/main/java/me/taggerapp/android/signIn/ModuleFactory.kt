@@ -1,9 +1,16 @@
 package me.taggerapp.android.signIn
 
+import android.content.Context
+import me.taggerapp.android.providers.PreferencesProvider
+import me.taggerapp.android.providers.SharedPreferencesProviderImpl
+
 object ModuleFactory {
 
-    fun getSignUpController(): SignUpController {
+    fun getSignUpController(context: Context): SignUpController {
         val validateUserPin = ValidateNewUserPin()
-        return SignUpController(validateUserPin)
+        val preferencesProvider: PreferencesProvider = SharedPreferencesProviderImpl(context)
+        val saveUserPin = SaveUserPin(preferencesProvider)
+
+        return SignUpController(validateUserPin, saveUserPin)
     }
 }
