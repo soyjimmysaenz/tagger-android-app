@@ -13,3 +13,9 @@ class HomeController(
         return currentTaggedItems
     }
 }
+
+val TaggedItem.ratingText: String
+get() {
+    if (this.rating < 0 || this.rating > 5) return "?⭐️"
+    return "${this.rating}⭐️"
+}
