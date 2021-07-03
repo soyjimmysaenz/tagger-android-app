@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="@dimen/spacing_2x">
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="@dimen/spacing_2x">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/viewImage"
@@ -21,9 +22,11 @@
         android:id="@+id/textViewTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Headline5"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:layout_marginStart="@dimen/spacing_2x"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viewImage"
         app:layout_constraintStart_toEndOf="@id/viewImage"
         app:layout_constraintEnd_toStartOf="@id/textViewRating"
         app:layout_constraintBottom_toTopOf="@id/textViewDescription"
