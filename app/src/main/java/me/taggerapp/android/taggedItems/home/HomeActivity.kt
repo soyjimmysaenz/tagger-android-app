@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivityHomeBinding
 import me.taggerapp.android.taggedItems.ModuleFactory
 import me.taggerapp.android.taggedItems.TaggedItem
@@ -18,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
         TaggedItemsListAdapter(::onTaggedItemSelected)
     }
     private val viewController: HomeController by lazy {
-        ModuleFactory.getHomeController()
+        ModuleFactory.getHomeController(this)
     }
 
     companion object {
@@ -50,6 +52,10 @@ class HomeActivity : AppCompatActivity() {
             recyclerViewItems.adapter = taggedItemsAdapter
             recyclerViewItems.layoutManager = LinearLayoutManager(this@HomeActivity)
             recyclerViewItems.setHasFixedSize(true)
+
+            buttonAddItem.setOnClickListener {
+                onNewItemButtonSelected()
+            }
         }
     }
 
@@ -62,5 +68,18 @@ class HomeActivity : AppCompatActivity() {
         Log.d(TAG, "Tagged item selected: $taggedItem")
         Toast.makeText(this, "Seleccionaste ${taggedItem.title}", Toast.LENGTH_SHORT).show()
         //TODO: presentar dialog con detalle de item
+    }
+    
+    private fun onNewItemButtonSelected() {
+        val (savedItem, currentItems) = viewController.addTaggedItem()
+        val isSavedSuccessfully = savedItem != null
+
+        if (isSavedSuccessfully) {
+            taggedItemsAdapter.update(currentItems)
+        }
+
+        @StringRes val stringId = if (isSavedSuccessfully)
+            R.string.item_saved else R.string.error_saving_item
+        Toast.makeText(this, getString(stringId), Toast.LENGTH_SHORT).show()
     }
 }
