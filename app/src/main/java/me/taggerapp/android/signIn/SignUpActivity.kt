@@ -6,7 +6,7 @@ import android.widget.Toast
 import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivitySignUpBinding
 import me.taggerapp.android.helpers.hideKeyboard
-import me.taggerapp.android.home.HomeActivity
+import me.taggerapp.android.taggedItems.home.HomeActivity
 
 class SignUpActivity : AppCompatActivity() {
 

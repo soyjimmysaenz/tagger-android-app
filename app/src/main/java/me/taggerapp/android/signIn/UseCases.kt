@@ -10,6 +10,7 @@ class ValidateNewUserPin {
     }
 
     operator fun invoke(userPinRequest: UserPinRequest): Boolean {
+        //TODO: implementar tests (local)
         return userPinRequest.pin?.length == PIN_LENGTH
     }
 }
@@ -21,8 +22,10 @@ class SaveUserPin(private val preferencesProvider: PreferencesProvider) {
     }
 
     operator fun invoke(userPinRequest: UserPinRequest): Boolean {
+        //TODO: implementar tests (instrumented y local)
         val pin = userPinRequest.pin ?: return false
         return try {
+            //TODO: usar repository
             preferencesProvider.saveString(PIN_KEY, pin)
             true
         } catch (error: Exception) {
