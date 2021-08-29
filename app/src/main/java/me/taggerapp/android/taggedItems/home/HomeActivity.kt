@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivityHomeBinding
@@ -49,9 +50,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupViews() {
         with (binding) {
-            recyclerViewItems.adapter = taggedItemsAdapter
-            recyclerViewItems.layoutManager = LinearLayoutManager(this@HomeActivity)
-            recyclerViewItems.setHasFixedSize(true)
+            recyclerViewItems.apply {
+                val context = this@HomeActivity
+                adapter = taggedItemsAdapter
+                val manager = LinearLayoutManager(context)
+                layoutManager = manager
+                setHasFixedSize(true)
+                val divider = DividerItemDecoration(context, manager.orientation)
+                addItemDecoration(divider)
+            }
 
             buttonAddItem.setOnClickListener {
                 onNewItemButtonSelected()
