@@ -7,17 +7,16 @@ import me.taggerapp.android.providers.SharedPreferencesProviderImpl
 object ModuleFactory {
 
     internal fun getSignUpController(context: Context): SignUpController {
-        val validateUserPin = ValidateNewUserPin()
         val preferencesProvider: PreferencesProvider = SharedPreferencesProviderImpl(context)
-        val saveUserPin = SaveUserPin(preferencesProvider)
+        val repository = UserSessionRepositoryImpl(preferencesProvider)
 
-        return SignUpController(validateUserPin, saveUserPin)
+        return SignUpController(repository)
     }
 
     internal fun getStartAppController(context: Context): StartAppController {
         val preferencesProvider: PreferencesProvider = SharedPreferencesProviderImpl(context)
-        val getUserPin = GetUserPin(preferencesProvider)
+        val repository = UserSessionRepositoryImpl(preferencesProvider)
 
-        return StartAppController(getUserPin)
+        return StartAppController(repository)
     }
 }

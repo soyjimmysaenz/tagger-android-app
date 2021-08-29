@@ -11,8 +11,6 @@ object ModuleFactory {
         val dbSource = DatabaseTaggedItemsDataSource(itemsDao)
         val sampleSource = SampleTaggedItemsDataSource()
         val repository: TaggedItemsRepository = TaggedItemsRepositoryImpl(dbSource, sampleSource)
-        val getTaggedItems = GetTaggedItems(repository)
-        val saveGeneratedTaggedItem = SaveGeneratedTaggedItem(repository)
-        return HomeController(getTaggedItems, saveGeneratedTaggedItem)
+        return HomeController(repository)
     }
 }

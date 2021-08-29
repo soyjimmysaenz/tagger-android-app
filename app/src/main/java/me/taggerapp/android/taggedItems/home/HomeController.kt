@@ -1,12 +1,10 @@
 package me.taggerapp.android.taggedItems.home
 
-import me.taggerapp.android.taggedItems.GetTaggedItems
-import me.taggerapp.android.taggedItems.SaveGeneratedTaggedItem
 import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.TaggedItemsRepository
 
 class HomeController(
-    private val getTaggedItems: GetTaggedItems,
-    private val saveGeneratedTaggedItem: SaveGeneratedTaggedItem
+    private val taggedItemsRepository: TaggedItemsRepository
 ) {
     private val currentTaggedItems: MutableList<TaggedItem> = mutableListOf()
 
@@ -23,6 +21,21 @@ class HomeController(
             currentTaggedItems.add(lastTaggedItem)
         }
         return Pair(lastTaggedItem, currentTaggedItems)
+    }
+
+    private fun getTaggedItems(): List<TaggedItem> {
+        return taggedItemsRepository
+            .getAll()
+            .sortedBy { item ->
+                item.title
+            }
+    }
+
+    private fun saveGeneratedTaggedItem(): TaggedItem? {
+        val generatedModel = taggedItemsRepository.buildRandom()
+        val isSaved = taggedItemsRepository.save(generatedModel)
+        if (!isSaved) return null
+        return generatedModel
     }
 }
 
