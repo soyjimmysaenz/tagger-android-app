@@ -34,6 +34,11 @@ class SaveTaggedItemActivity : AppCompatActivity() {
         setup()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
+
     private fun setup() {
         setupViewBinding()
         val couldSetupController = setupController()
@@ -62,6 +67,9 @@ class SaveTaggedItemActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(binding.topBar)
-        supportActionBar?.title = viewController.currentModel.title
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            title = viewController.currentModel.title
+        }
     }
 }
