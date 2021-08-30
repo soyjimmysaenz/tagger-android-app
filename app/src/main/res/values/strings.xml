@@ -15,4 +15,6 @@
     <string name="description">Descripción</string>
     <string name="rating">Calificación</string>
     <string name="save">Guardar</string>
+    <string name="error_invalid_title">Favor ingresa el título</string>
+    <string name="error_invalid_rating">Favor selecciona un rating</string>
 </resources>

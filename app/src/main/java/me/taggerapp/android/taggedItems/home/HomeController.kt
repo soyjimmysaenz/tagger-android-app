@@ -15,27 +15,12 @@ class HomeController(
         return currentTaggedItems
     }
 
-    suspend fun addTaggedItem(): Pair<TaggedItem?, List<TaggedItem>> {
-        val lastTaggedItem = saveGeneratedTaggedItem()
-        if (lastTaggedItem != null) {
-            currentTaggedItems.add(lastTaggedItem)
-        }
-        return Pair(lastTaggedItem, currentTaggedItems)
-    }
-
     private suspend fun getTaggedItems(): List<TaggedItem> {
         return taggedItemsRepository
             .getAll()
             .sortedBy { item ->
                 item.title
             }
-    }
-
-    private suspend fun saveGeneratedTaggedItem(): TaggedItem? {
-        val generatedModel = taggedItemsRepository.buildRandom()
-        val isSaved = taggedItemsRepository.save(generatedModel)
-        if (!isSaved) return null
-        return generatedModel
     }
 }
 

@@ -1,10 +1,14 @@
 package me.taggerapp.android.taggedItems
 
+import me.taggerapp.android.helpers.DateHelper
+
 interface TaggedItemsRepository {
     suspend fun getAll(): List<TaggedItem>
     suspend fun save(taggedItem: TaggedItem): Boolean
     //TODO: remover, creado para efectos prácticos
     fun buildRandom(): TaggedItem
+    fun generateId(): String
+    fun generateNowMillis(): Long
 }
 
 class TaggedItemsRepositoryImpl(
@@ -26,6 +30,10 @@ class TaggedItemsRepositoryImpl(
     }
 
     override fun buildRandom() = sampleDataSource.buildModel()
+
+    override fun generateId(): String = java.util.UUID.randomUUID().toString()
+
+    override fun generateNowMillis(): Long = DateHelper.now()
 }
 
 fun TaggedItemEntity.toDomain(): TaggedItem {

@@ -16,6 +16,9 @@ class DatabaseTaggedItemsDataSource(
     }
 
     suspend fun insert(entity: TaggedItemEntity) {
+        //agregado para afectos de demostracion
+        //TODO: eliminar
+        kotlinx.coroutines.delay(500)
         taggedItemDao.insert(entity)
     }
 }

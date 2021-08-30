@@ -14,7 +14,7 @@ object ModuleFactory {
 
     internal fun getSaveController(context: Context): SaveTaggedItemController {
         val repository = provideTaggedItemRepository(context)
-        return SaveTaggedItemController(repository)
+        return SaveTaggedItemController(repository, context.applicationContext)
     }
 
     private fun provideTaggedItemRepository(context: Context): TaggedItemsRepositoryImpl {
