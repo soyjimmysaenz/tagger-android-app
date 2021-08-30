@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -70,8 +71,16 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun requestItems() = lifecycleScope.launch {
+        isLoading(true)
         val taggedItemModels = viewController.loadItems()
         taggedItemsAdapter.update(taggedItemModels)
+        isLoading(false)
+    }
+
+    private fun isLoading(isLoading: Boolean) = with(binding) {
+        progressItems.isVisible = isLoading
+        recyclerViewItems.isVisible = !isLoading
+        buttonAddItem.isEnabled = !isLoading
     }
 
     private fun onTaggedItemSelected(taggedItem: TaggedItem) {
@@ -81,6 +90,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun onNewItemButtonSelected() = lifecycleScope.launch {
+        isLoading(true)
         val (savedItem, currentItems) = viewController.addTaggedItem()
         val isSavedSuccessfully = savedItem != null
 
@@ -91,6 +101,7 @@ class HomeActivity : AppCompatActivity() {
         @StringRes val stringId = if (isSavedSuccessfully)
             R.string.item_saved else R.string.error_saving_item
         Toast.makeText(this@HomeActivity, getString(stringId), Toast.LENGTH_SHORT).show()
+        isLoading(false)
     }
 
     private fun navigateToDetails(selectedItem: TaggedItem?) {
