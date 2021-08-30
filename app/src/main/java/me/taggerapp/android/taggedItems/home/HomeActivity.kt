@@ -13,6 +13,7 @@ import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivityHomeBinding
 import me.taggerapp.android.taggedItems.ModuleFactory
 import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.details.SaveTaggedItemActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -73,8 +74,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onTaggedItemSelected(taggedItem: TaggedItem) {
         Log.d(TAG, "Tagged item selected: $taggedItem")
-        Toast.makeText(this, "Seleccionaste ${taggedItem.title}", Toast.LENGTH_SHORT).show()
         //TODO: presentar dialog con detalle de item
+        navigateToDetails(taggedItem)
     }
     
     private fun onNewItemButtonSelected() {
@@ -88,5 +89,10 @@ class HomeActivity : AppCompatActivity() {
         @StringRes val stringId = if (isSavedSuccessfully)
             R.string.item_saved else R.string.error_saving_item
         Toast.makeText(this, getString(stringId), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToDetails(selectedItem: TaggedItem) {
+        val intent = SaveTaggedItemActivity.createIntent(this, selectedItem)
+        startActivity(intent)
     }
 }

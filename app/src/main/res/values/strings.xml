@@ -9,4 +9,5 @@
     <string name="add_item">Agregar Item</string>
     <string name="item_saved">🎉 Item guardado 🎉</string>
     <string name="error_saving_item">Disculpa, algo salió mal al guardar el item, intenta nuevamente</string>
+    <string name="save_item">Guardar Item</string>
 </resources>
