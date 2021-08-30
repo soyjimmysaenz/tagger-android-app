@@ -110,7 +110,7 @@ class SaveTaggedItemActivity : AppCompatActivity() {
             isSaving(false)
             when (error) {
                 is FieldValidationException -> showErrorBy(error)
-                else -> showSavingError()
+                else -> showSavingError(error.message)
             }
         }
     }

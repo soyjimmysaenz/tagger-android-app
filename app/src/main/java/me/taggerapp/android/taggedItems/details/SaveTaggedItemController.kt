@@ -44,7 +44,7 @@ class SaveTaggedItemController(
 
         val isSaved = taggedItemsRepository.save(modelToSave)
         if (!isSaved) {
-            throw IllegalStateException("Algo salió mal al guardar el item, intenta nuevamente por favor")
+            throw IllegalStateException(context.getString(R.string.error_saving_item))
         }
     }
 
