@@ -158,7 +158,7 @@ class SaveTaggedItemActivity : AppCompatActivity() {
         val message = errorMessage ?: getString(R.string.error_saving_item)
         Snackbar
             .make(binding.root, message, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(ContextCompat.getColor(this, R.color.backgroundError))
+            .setBackgroundTint(ContextCompat.getColor(this, R.color.background_error))
             .show()
     }
 }

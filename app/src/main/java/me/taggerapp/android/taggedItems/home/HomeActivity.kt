@@ -38,10 +38,14 @@ class HomeActivity : AppCompatActivity() {
         setup()
     }
 
+    override fun onResume() {
+        super.onResume()
+        requestItems()
+    }
+
     private fun setup() {
         setupViewBinding()
         setupViews()
-        requestItems()
     }
 
     private fun setupViewBinding() {
@@ -76,7 +80,13 @@ class HomeActivity : AppCompatActivity() {
 
     private fun isLoading(isLoading: Boolean) = with(binding) {
         progressItems.isVisible = isLoading
-        recyclerViewItems.isVisible = !isLoading
+        val currentListViewCount = recyclerViewItems.adapter?.itemCount ?: 0
+        if (currentListViewCount > 0) {
+            recyclerViewItems.isVisible = true
+            listViewItemsOverlay.isVisible = isLoading
+        } else {
+            recyclerViewItems.isVisible = !isLoading
+        }
         buttonAddItem.isEnabled = !isLoading
     }
 

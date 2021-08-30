@@ -11,7 +11,7 @@ class DatabaseTaggedItemsDataSource(
     suspend fun getAll(): List<TaggedItemEntity> {
         //agregado para afectos de demostracion
         //TODO: eliminar
-        kotlinx.coroutines.delay(600)
+        kotlinx.coroutines.delay(400)
         return taggedItemDao.getAll()
     }
 

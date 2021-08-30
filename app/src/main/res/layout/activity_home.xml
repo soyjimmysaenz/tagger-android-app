@@ -27,6 +27,21 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
+    <View
+        android:id="@+id/listViewItemsOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/overlay"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="@id/recyclerViewItems"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerViewItems"
+        app:layout_constraintLeft_toLeftOf="@id/recyclerViewItems"
+        app:layout_constraintRight_toRightOf="@id/recyclerViewItems"
+        tools:visibility="visible"
+        />
+
     <ProgressBar
         android:id="@+id/progressItems"
         android:layout_width="wrap_content"
