@@ -7,8 +7,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import me.taggerapp.android.R
 import me.taggerapp.android.databinding.ActivityHomeBinding
 import me.taggerapp.android.taggedItems.ModuleFactory
@@ -50,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        with (binding) {
+        with(binding) {
             recyclerViewItems.apply {
                 val context = this@HomeActivity
                 adapter = taggedItemsAdapter
@@ -67,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun requestItems() {
+    private fun requestItems() = lifecycleScope.launch {
         val taggedItemModels = viewController.loadItems()
         taggedItemsAdapter.update(taggedItemModels)
     }
@@ -77,8 +79,8 @@ class HomeActivity : AppCompatActivity() {
         //TODO: presentar dialog con detalle de item
         navigateToDetails(taggedItem)
     }
-    
-    private fun onNewItemButtonSelected() {
+
+    private fun onNewItemButtonSelected() = lifecycleScope.launch {
         val (savedItem, currentItems) = viewController.addTaggedItem()
         val isSavedSuccessfully = savedItem != null
 
@@ -88,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
 
         @StringRes val stringId = if (isSavedSuccessfully)
             R.string.item_saved else R.string.error_saving_item
-        Toast.makeText(this, getString(stringId), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this@HomeActivity, getString(stringId), Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToDetails(selectedItem: TaggedItem?) {

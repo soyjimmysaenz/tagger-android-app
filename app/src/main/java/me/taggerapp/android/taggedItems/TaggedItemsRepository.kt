@@ -1,8 +1,8 @@
 package me.taggerapp.android.taggedItems
 
 interface TaggedItemsRepository {
-    fun getAll(): List<TaggedItem>
-    fun save(taggedItem: TaggedItem): Boolean
+    suspend fun getAll(): List<TaggedItem>
+    suspend fun save(taggedItem: TaggedItem): Boolean
     //TODO: remover, creado para efectos prácticos
     fun buildRandom(): TaggedItem
 }
@@ -13,13 +13,13 @@ class TaggedItemsRepositoryImpl(
     private val sampleDataSource: SampleTaggedItemsDataSource
 ) : TaggedItemsRepository {
 
-    override fun getAll(): List<TaggedItem> {
+    override suspend fun getAll(): List<TaggedItem> {
         return localDataSource
             .getAll()
             .map { entity -> entity.toDomain() }
     }
 
-    override fun save(taggedItem: TaggedItem): Boolean {
+    override suspend fun save(taggedItem: TaggedItem): Boolean {
         val entity = taggedItem.toEntity()
         localDataSource.insert(entity)
         return true

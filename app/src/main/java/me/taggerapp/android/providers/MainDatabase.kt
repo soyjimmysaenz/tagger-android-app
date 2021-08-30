@@ -29,7 +29,6 @@ abstract class MainDatabase : RoomDatabase(), MainDatabaseProvider {
                         MainDatabase::class.java,
                         "tagger_main_db"
                     ).fallbackToDestructiveMigration()
-                        .allowMainThreadQueries() //TODO: remover, agregado para efectos prácticos
                         .build()
                     INSTANCE = instance
                 }
