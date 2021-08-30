@@ -11,4 +11,8 @@
     <string name="error_saving_item">Disculpa, algo salió mal al guardar el item, intenta nuevamente</string>
     <string name="save_item">Guardar Item</string>
     <string name="error_loading_item">Algo salió mal al cargar el item :(</string>
+    <string name="title">Título</string>
+    <string name="description">Descripción</string>
+    <string name="rating">Calificación</string>
+    <string name="save">Guardar</string>
 </resources>
