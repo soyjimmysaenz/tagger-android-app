@@ -9,13 +9,12 @@ class SaveTaggedItemController {
         const val ARG_MODEL = "args.model"
     }
 
-    internal lateinit var currentModel: TaggedItem
+    internal var currentModel: TaggedItem? = null
         private set
 
     fun setupWith(bundle: Bundle?) {
         if (bundle == null) throw IllegalStateException("Datos inválidos")
         if (!bundle.containsKey(ARG_MODEL)) throw IllegalStateException("Modelo inválido")
         currentModel = bundle.getParcelable(ARG_MODEL)
-            ?: throw IllegalStateException("Modelo inválido")
     }
 }

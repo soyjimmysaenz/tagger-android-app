@@ -91,7 +91,7 @@ class HomeActivity : AppCompatActivity() {
         Toast.makeText(this, getString(stringId), Toast.LENGTH_SHORT).show()
     }
 
-    private fun navigateToDetails(selectedItem: TaggedItem) {
+    private fun navigateToDetails(selectedItem: TaggedItem?) {
         val intent = SaveTaggedItemActivity.createIntent(this, selectedItem)
         startActivity(intent)
     }

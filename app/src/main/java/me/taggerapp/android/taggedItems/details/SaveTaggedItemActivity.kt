@@ -16,7 +16,7 @@ class SaveTaggedItemActivity : AppCompatActivity() {
     companion object {
         const val TAG = "SaveTaggedItemActivity"
 
-        fun createIntent(context: Context, model: TaggedItem): Intent {
+        fun createIntent(context: Context, model: TaggedItem?): Intent {
             val intent = Intent(context, SaveTaggedItemActivity::class.java)
             intent.putExtra(SaveTaggedItemController.ARG_MODEL, model)
             return intent
@@ -69,7 +69,9 @@ class SaveTaggedItemActivity : AppCompatActivity() {
         setSupportActionBar(binding.topBar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = viewController.currentModel.title
+            viewController.currentModel?.title?.let { itemTitle ->
+                title = itemTitle
+            }
         }
     }
 }
