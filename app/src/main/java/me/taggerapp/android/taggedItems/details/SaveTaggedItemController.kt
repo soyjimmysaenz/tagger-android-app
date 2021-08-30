@@ -1,0 +1,21 @@
+package me.taggerapp.android.taggedItems.details
+
+import android.os.Bundle
+import me.taggerapp.android.taggedItems.TaggedItem
+
+class SaveTaggedItemController {
+
+    companion object {
+        const val ARG_MODEL = "args.model"
+    }
+
+    internal lateinit var currentModel: TaggedItem
+        private set
+
+    fun setupWith(bundle: Bundle?) {
+        if (bundle == null) throw IllegalStateException("Datos inválidos")
+        if (!bundle.containsKey(ARG_MODEL)) throw IllegalStateException("Modelo inválido")
+        currentModel = bundle.getParcelable(ARG_MODEL)
+            ?: throw IllegalStateException("Modelo inválido")
+    }
+}

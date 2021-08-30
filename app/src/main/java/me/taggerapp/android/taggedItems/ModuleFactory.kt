@@ -2,6 +2,7 @@ package me.taggerapp.android.taggedItems
 
 import android.content.Context
 import me.taggerapp.android.providers.MainDatabase
+import me.taggerapp.android.taggedItems.details.SaveTaggedItemController
 import me.taggerapp.android.taggedItems.home.HomeController
 
 object ModuleFactory {
@@ -12,5 +13,9 @@ object ModuleFactory {
         val sampleSource = SampleTaggedItemsDataSource()
         val repository: TaggedItemsRepository = TaggedItemsRepositoryImpl(dbSource, sampleSource)
         return HomeController(repository)
+    }
+
+    internal fun getSaveController(context: Context): SaveTaggedItemController {
+        return SaveTaggedItemController()
     }
 }
