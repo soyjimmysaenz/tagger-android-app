@@ -2,8 +2,11 @@ package me.taggerapp.android.taggedItems.details
 
 import android.os.Bundle
 import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.TaggedItemsRepository
 
-class SaveTaggedItemController {
+class SaveTaggedItemController(
+    private val taggedItemsRepository: TaggedItemsRepository
+) {
 
     companion object {
         const val ARG_MODEL = "args.model"

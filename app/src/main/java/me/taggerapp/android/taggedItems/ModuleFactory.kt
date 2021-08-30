@@ -8,14 +8,19 @@ import me.taggerapp.android.taggedItems.home.HomeController
 object ModuleFactory {
 
     internal fun getHomeController(context: Context): HomeController {
-        val itemsDao = MainDatabase.getInstance(context).taggedItemDao()
-        val dbSource = DatabaseTaggedItemsDataSource(itemsDao)
-        val sampleSource = SampleTaggedItemsDataSource()
-        val repository: TaggedItemsRepository = TaggedItemsRepositoryImpl(dbSource, sampleSource)
+        val repository = provideTaggedItemRepository(context)
         return HomeController(repository)
     }
 
     internal fun getSaveController(context: Context): SaveTaggedItemController {
-        return SaveTaggedItemController()
+        val repository = provideTaggedItemRepository(context)
+        return SaveTaggedItemController(repository)
+    }
+
+    private fun provideTaggedItemRepository(context: Context): TaggedItemsRepositoryImpl {
+        val itemsDao = MainDatabase.getInstance(context.applicationContext).taggedItemDao()
+        val dbSource = DatabaseTaggedItemsDataSource(itemsDao)
+        val sampleSource = SampleTaggedItemsDataSource()
+        return TaggedItemsRepositoryImpl(dbSource, sampleSource)
     }
 }
