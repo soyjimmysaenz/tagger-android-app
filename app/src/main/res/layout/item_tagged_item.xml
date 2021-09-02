@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:maxLines="1"
+        android:maxLines="2"
         android:ellipsize="end"
         android:layout_marginStart="@dimen/spacing_2x"
         app:layout_constraintTop_toTopOf="@id/viewImage"

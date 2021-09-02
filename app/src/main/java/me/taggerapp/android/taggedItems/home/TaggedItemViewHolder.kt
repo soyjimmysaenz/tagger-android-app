@@ -11,7 +11,8 @@ class TaggedItemViewHolder(
     fun bind(taggedItem: TaggedItem, itemSelectedListener: (TaggedItem) -> Unit) {
         with(binding) {
             textViewTitle.text = taggedItem.title
-            textViewDescription.text = taggedItem.description ?: "..."
+            val description = "${taggedItem.sourceText} ${taggedItem.description ?: "..."}"
+            textViewDescription.text = description
             textViewRating.text = taggedItem.ratingText
             //TODO: implementar carga de imagen
 

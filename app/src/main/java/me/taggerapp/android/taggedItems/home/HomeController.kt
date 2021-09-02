@@ -1,5 +1,6 @@
 package me.taggerapp.android.taggedItems.home
 
+import me.taggerapp.android.taggedItems.ItemSource
 import me.taggerapp.android.taggedItems.TaggedItem
 import me.taggerapp.android.taggedItems.TaggedItemsRepository
 
@@ -28,4 +29,13 @@ val TaggedItem.ratingText: String
     get() {
         if (this.rating < 0 || this.rating > 5) return "?⭐️"
         return "${this.rating}⭐️"
+    }
+
+val TaggedItem.sourceText: String
+    get() {
+        return when (this.source) {
+            ItemSource.REMOTE -> "🌎"
+            ItemSource.LOCAL -> "💾"
+            ItemSource.MEMORY -> "🔋"
+        }
     }
