@@ -10,7 +10,7 @@ object ModuleFactory {
 
     internal fun getHomeController(context: Context): HomeController {
         val repository = provideTaggedItemRepository(context)
-        return HomeController(repository)
+        return HomeController(repository, context.applicationContext::getString)
     }
 
     internal fun getSaveController(context: Context): SaveTaggedItemController {

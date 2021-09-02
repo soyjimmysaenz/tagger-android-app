@@ -1,17 +1,32 @@
 package me.taggerapp.android.taggedItems.home
 
+import android.util.Log
+import me.taggerapp.android.R
+import me.taggerapp.android.helpers.LoadingDataException
 import me.taggerapp.android.taggedItems.ItemSource
 import me.taggerapp.android.taggedItems.TaggedItem
 import me.taggerapp.android.taggedItems.TaggedItemsRepository
 
 class HomeController(
     private val taggedItemsRepository: TaggedItemsRepository,
+    private val getString: (resourceId: Int) -> String
 ) {
+    companion object {
+        private const val TAG = "HomeController"
+    }
+
     private val currentTaggedItems: MutableList<TaggedItem> = mutableListOf()
 
     suspend fun loadItems(): List<TaggedItem> {
         currentTaggedItems.clear()
-        val loadedItems = getTaggedItems()
+        val loadedItems = try {
+            getTaggedItems()
+        } catch (error: Throwable) {
+            Log.e(TAG, error.message, error)
+            val shortErrorMessage = getString(R.string.error_loading_items_short)
+            val longErrorMessage = getString(R.string.error_loading_items_long)
+            throw LoadingDataException(longErrorMessage, shortErrorMessage, longErrorMessage, error)
+        }
         currentTaggedItems.addAll(loadedItems)
         return currentTaggedItems
     }

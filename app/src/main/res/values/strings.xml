@@ -11,10 +11,13 @@
     <string name="error_saving_item">Disculpa, algo salió mal al guardar el item, intenta nuevamente</string>
     <string name="save_item">Guardar Item</string>
     <string name="error_loading_item">Algo salió mal al cargar el item :(</string>
+    <string name="error_loading_items_short">Algo salió mal al cargar los items D:</string>
+    <string name="error_loading_items_long">(╯°□°)╯︵ ┻━┻ \n\nAlgo salió mal al cargar los items\n\nPresiona aquí para intentar nuevamente :)</string>
     <string name="title">Título</string>
     <string name="description">Descripción</string>
     <string name="rating">Calificación</string>
     <string name="save">Guardar</string>
     <string name="error_invalid_title">Favor ingresa el título</string>
     <string name="error_invalid_rating">Favor selecciona un rating</string>
+    <string name="trying_again">Intentando nuevamente...</string>
 </resources>
