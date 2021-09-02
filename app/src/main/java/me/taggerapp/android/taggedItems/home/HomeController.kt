@@ -3,6 +3,7 @@ package me.taggerapp.android.taggedItems.home
 import android.util.Log
 import me.taggerapp.android.R
 import me.taggerapp.android.helpers.LoadingDataException
+import me.taggerapp.android.taggedItems.Resources
 import me.taggerapp.android.taggedItems.ItemSource
 import me.taggerapp.android.taggedItems.TaggedItem
 import me.taggerapp.android.taggedItems.TaggedItemsRepository
@@ -54,3 +55,9 @@ val TaggedItem.sourceText: String
             ItemSource.MEMORY -> "🔋"
         }
     }
+
+val TaggedItem.imageData: Pair<String, Int>
+    get() = Pair(
+        if (imagePath.isNullOrEmpty()) Resources.PLACEHOLDER_IMG_PATH else imagePath,
+        R.drawable.ic_launcher_foreground
+    )

@@ -7,13 +7,10 @@
     android:background="?android:attr/selectableItemBackground"
     android:padding="@dimen/spacing_2x">
 
-    <androidx.cardview.widget.CardView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/viewImage"
         android:layout_width="@dimen/item_image_size"
         android:layout_height="@dimen/item_image_size"
-        app:cardBackgroundColor="@color/gray_200"
-        app:cardElevation="0dp"
-        app:cardCornerRadius="@dimen/spacing_base"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
