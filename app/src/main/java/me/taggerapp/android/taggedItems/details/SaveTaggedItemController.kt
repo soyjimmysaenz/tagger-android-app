@@ -6,6 +6,7 @@ import me.taggerapp.android.R
 import me.taggerapp.android.helpers.FieldValidationException
 import me.taggerapp.android.helpers.ValidationResult
 import me.taggerapp.android.helpers.toIntOrNull
+import me.taggerapp.android.taggedItems.ItemSource
 import me.taggerapp.android.taggedItems.TaggedItem
 import me.taggerapp.android.taggedItems.TaggedItemsRepository
 
@@ -79,7 +80,8 @@ class SaveTaggedItemController(
         description = description,
         rating = requireNotNull(rating).toInt(),
         imagePath = null,
-        createdAt = taggedItemsRepository.generateNowMillis()
+        createdAt = taggedItemsRepository.generateNowMillis(),
+        source = ItemSource.MEMORY
     )
 
     private fun TaggedItem.toSaveParams(): SaveTaggedItemParams = SaveTaggedItemParams(

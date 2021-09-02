@@ -36,25 +36,3 @@ class TaggedItemsRepositoryImpl(
     override fun generateNowMillis(): Long = DateHelper.now()
 }
 
-fun TaggedItemEntity.toDomain(): TaggedItem {
-    return TaggedItem(
-        id = this.id,
-        title = this.title,
-        description = this.description,
-        rating = this.rating,
-        imagePath = this.imagePath,
-        createdAt = this.createdAt
-    )
-}
-
-fun TaggedItem.toEntity(): TaggedItemEntity {
-    return TaggedItemEntity(
-        id = this.id,
-        title = this.title,
-        description = this.description,
-        rating = this.rating,
-        imagePath = this.imagePath,
-        createdAt = this.createdAt
-    )
-}
-

@@ -11,5 +11,10 @@ data class TaggedItem(
     val description: String?,
     val rating: Int,
     val imagePath: String?,
-    val createdAt: Long
+    val createdAt: Long,
+    val source: ItemSource
 ) : Parcelable
+
+enum class ItemSource {
+    REMOTE, LOCAL, MEMORY
+}
