@@ -33,6 +33,8 @@ class SaveTaggedItemController(
         currentModel = bundle.getParcelable(ARG_MODEL)
     }
 
+    fun canEdit(): Boolean = currentModel?.source != ItemSource.REMOTE
+
     suspend fun trySaveItem(params: SaveTaggedItemParams) {
         val validationResult = validateParamsToSave(params)
         if (validationResult is ValidationResult.Error) {
