@@ -1,13 +1,24 @@
 package me.taggerapp.android.providers.networking
 
+import me.taggerapp.android.startup.FlipperBootstrapper
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
 
 class OkHttpClientProvider(
-    private val client: OkHttpClient = OkHttpClient(),
+    clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder(),
     private val baseApiUrl: String = ApiConstants.BASE_URL
 ): SyncHttpClientProvider {
+
+    private val client: OkHttpClient =
+        FlipperBootstrapper.buildOkhttpInterceptor()?.let { interceptor ->
+            clientBuilder
+                .addNetworkInterceptor(interceptor)
+                .build()
+        } ?: run {
+            clientBuilder
+            .build()
+        }
 
     override fun requestString(resource: String): String {
         val absUrl = "$baseApiUrl/$resource"
