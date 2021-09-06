@@ -7,3 +7,7 @@ object ApiConstants {
 interface SyncHttpClientProvider {
     fun requestString(resource: String): String
 }
+
+interface AsyncHttpClientProvider {
+    suspend fun requestString(resource: String): String
+}
