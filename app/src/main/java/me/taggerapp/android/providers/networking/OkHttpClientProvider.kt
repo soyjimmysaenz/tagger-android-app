@@ -6,9 +6,9 @@ import okhttp3.Request
 import java.io.IOException
 
 class OkHttpClientProvider(
-    clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder(),
+    private val clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder(),
     private val baseApiUrl: String = ApiConstants.BASE_URL
-): SyncHttpClientProvider {
+) : SyncHttpClientProvider {
 
     private val client: OkHttpClient =
         FlipperBootstrapper.buildOkhttpInterceptor()?.let { interceptor ->
@@ -17,8 +17,10 @@ class OkHttpClientProvider(
                 .build()
         } ?: run {
             clientBuilder
-            .build()
+                .build()
         }
+
+    fun getCurrentClient() = client
 
     override fun requestString(resource: String): String {
         val absUrl = "$baseApiUrl/$resource"

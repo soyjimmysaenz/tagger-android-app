@@ -10,9 +10,13 @@ object RetrofitProviderFactory {
         return retrofit.create(serviceClass)
     }
 
-    private fun create(baseApiUrl: String = ApiConstants.BASE_URL): Retrofit {
+    private fun create(
+        baseApiUrl: String = ApiConstants.BASE_URL,
+        httpClientProvider: OkHttpClientProvider = OkHttpClientProvider()
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseApiUrl)
+            .client(httpClientProvider.getCurrentClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
