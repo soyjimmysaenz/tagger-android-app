@@ -2,8 +2,8 @@ package me.taggerapp.android.taggedItems
 
 import android.content.Context
 import me.taggerapp.android.providers.MainDatabase
+import me.taggerapp.android.providers.networking.KtorProviderFactory
 import me.taggerapp.android.providers.networking.NetworkUtils
-import me.taggerapp.android.providers.networking.RetrofitProviderFactory
 import me.taggerapp.android.taggedItems.details.SaveTaggedItemController
 import me.taggerapp.android.taggedItems.home.HomeController
 
@@ -24,10 +24,7 @@ object ModuleFactory {
         val itemsDao = MainDatabase.getInstance(context.applicationContext).taggedItemDao()
         val dbSource = DatabaseTaggedItemsDataSource(itemsDao)
 
-        val taggedItemsService = RetrofitProviderFactory.createService(
-            TaggedItemsService::class.java
-        )
-        val apiSource = ApiTaggedItemsDataSource(taggedItemsService)
+        val apiSource = ApiTaggedItemsDataSource(KtorProviderFactory)
         return TaggedItemsRepositoryImpl(dbSource, apiSource)
     }
 }
