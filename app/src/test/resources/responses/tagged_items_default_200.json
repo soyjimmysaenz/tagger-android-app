@@ -1,0 +1,34 @@
+[
+  {
+    "id": "f5076eb6-0a0e-11ec-9a03-0242ac130003",
+    "title": "Universidad Centroamericana (UCA)",
+    "description": "La carrera de Ingeniería en Sistemas es muy buena!",
+    "rating": 5,
+    "imagePath": "https://www.uca.edu.ni/images/2017/febrero2017/prin-rebranding-uca.jpg",
+    "createdAt": 1630382140484
+  },
+  {
+    "id": "f5077456-0a0e-11ec-9a03-0242ac130003",
+    "title": "Librería Jardín",
+    "description": "Mala experiencia comprando en Altamira",
+    "rating": 2,
+    "imagePath": null,
+    "createdAt": 1630382203494
+  },
+  {
+    "id": "f5077528-0a0e-11ec-9a03-0242ac130003",
+    "title": "Sushi Uramaki",
+    "description": "El mejor es el roll Primavera por ahora",
+    "rating": 4,
+    "imagePath": null,
+    "createdAt": 1630382268731
+  },
+  {
+    "id": "f50775dc-0a0e-11ec-9a03-0242ac130003",
+    "title": "SINSA",
+    "description": "Buena atención pero productos caros",
+    "rating": 3,
+    "imagePath": "https://www.sinsa.com.ni/file/general/logo.png",
+    "createdAt": 1630382320763
+  }
+]
