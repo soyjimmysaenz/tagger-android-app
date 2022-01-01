@@ -16,8 +16,7 @@ class ApiTaggedItemsDataSourceTest {
 
     @Before
     fun setUp() {
-        mockServer = MockWebServer()
-        mockServer.start()
+        mockServer = MockWebServer().apply { start() }
 
         val mockServerBaseUri = mockServer.url("/").toString()
         itemsService = RetrofitProviderFactory.createService(
