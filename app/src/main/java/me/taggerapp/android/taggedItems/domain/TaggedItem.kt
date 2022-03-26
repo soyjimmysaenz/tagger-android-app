@@ -1,4 +1,4 @@
-package me.taggerapp.android.taggedItems
+package me.taggerapp.android.taggedItems.domain
 
 data class TaggedItem(
     val id: String,
