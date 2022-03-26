@@ -1,8 +1,8 @@
 package me.taggerapp.android.taggedItems.domain
 
 interface TaggedItemsRepository {
-    fun getAllSync(): List<TaggedItem>
-    fun saveSync(taggedItem: TaggedItem): Boolean
+    suspend fun getAll(): List<TaggedItem>
+    suspend fun save(taggedItem: TaggedItem): Boolean
     fun generateId(): String
     fun generateNowMillis(): Long
 }

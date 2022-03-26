@@ -48,7 +48,6 @@ abstract class DefaultAppDatabase : RoomDatabase(), AppDatabase {
                 DB_NAME
             )
             .fallbackToDestructiveMigration()
-            .allowMainThreadQueries()
             .addCallback(object : RoomDatabase.Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
@@ -61,6 +60,7 @@ abstract class DefaultAppDatabase : RoomDatabase(), AppDatabase {
     }
 }
 
+//src: https://medium.com/androiddevelopers/7-pro-tips-for-room-fbadea4bfbd1
 private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
 
 /**

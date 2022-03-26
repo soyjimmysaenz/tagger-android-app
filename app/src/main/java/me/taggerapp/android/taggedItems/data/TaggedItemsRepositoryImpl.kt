@@ -9,15 +9,15 @@ class TaggedItemsRepositoryImpl(
     private val taggedItemDao: TaggedItemDao,
 ) : TaggedItemsRepository {
 
-    override fun getAllSync(): List<TaggedItem> {
+    override suspend fun getAll(): List<TaggedItem> {
         return taggedItemDao
-            .getAllSync()
+            .getAll()
             .map { entity -> entity.toDomain() }
     }
 
-    override fun saveSync(taggedItem: TaggedItem): Boolean {
+    override suspend fun save(taggedItem: TaggedItem): Boolean {
         val entity = taggedItem.toEntity()
-        taggedItemDao.insertSync(entity)
+        taggedItemDao.insert(entity)
         return true
     }
 

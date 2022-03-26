@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import me.taggerapp.android.databinding.ActivityHomeBinding
 import me.taggerapp.android.taggedItems.ModuleLocator
 import me.taggerapp.android.taggedItems.domain.TaggedItem
@@ -58,8 +60,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun requestItems() {
-        val taggedItemModels = viewController.loadItems()
-        taggedItemsAdapter.update(taggedItemModels)
+        lifecycleScope.launch {
+            val taggedItemModels = viewController.loadItems()
+            taggedItemsAdapter.update(taggedItemModels)
+        }
     }
 
     private fun onTaggedItemSelected(taggedItem: TaggedItem) {

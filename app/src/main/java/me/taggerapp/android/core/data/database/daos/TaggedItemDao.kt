@@ -9,11 +9,11 @@ import me.taggerapp.android.core.data.database.entities.TaggedItemEntity
 @Dao
 interface TaggedItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertSync(entity: TaggedItemEntity)
+    suspend fun insert(entity: TaggedItemEntity)
 
     @Insert
     fun insertSync(entities: List<TaggedItemEntity>)
 
     @Query("SELECT * FROM tagged_items")
-    fun getAllSync(): List<TaggedItemEntity>
+    suspend fun getAll(): List<TaggedItemEntity>
 }

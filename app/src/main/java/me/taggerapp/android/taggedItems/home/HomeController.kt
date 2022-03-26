@@ -8,7 +8,7 @@ class HomeController(
 ) {
     private var currentTaggedItems: List<TaggedItem> = emptyList()
 
-    fun loadItems(): List<TaggedItem> {
+    suspend fun loadItems(): List<TaggedItem> {
         currentTaggedItems = getTaggedItems()
         return currentTaggedItems
     }
