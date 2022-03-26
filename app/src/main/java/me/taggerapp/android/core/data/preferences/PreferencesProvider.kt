@@ -1,4 +1,4 @@
-package me.taggerapp.android.providers
+package me.taggerapp.android.core.data.preferences
 
 import android.content.Context
 import android.content.SharedPreferences

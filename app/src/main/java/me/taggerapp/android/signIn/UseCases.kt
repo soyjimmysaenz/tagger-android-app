@@ -1,6 +1,6 @@
 package me.taggerapp.android.signIn
 
-import me.taggerapp.android.providers.PreferencesProvider
+import me.taggerapp.android.core.data.preferences.PreferencesProvider
 import java.lang.Exception
 
 private object Constants {

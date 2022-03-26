@@ -1,8 +1,8 @@
 package me.taggerapp.android.signIn
 
 import android.content.Context
-import me.taggerapp.android.providers.PreferencesProvider
-import me.taggerapp.android.providers.SharedPreferencesProviderImpl
+import me.taggerapp.android.core.data.preferences.PreferencesProvider
+import me.taggerapp.android.core.data.preferences.SharedPreferencesProviderImpl
 
 object ModuleFactory {
 
