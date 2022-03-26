@@ -34,10 +34,14 @@ class HomeActivity : AppCompatActivity() {
         setup()
     }
 
+    override fun onResume() {
+        super.onResume()
+        requestItems()
+    }
+
     private fun setup() {
         setupViewBinding()
         setupViews()
-        requestItems()
     }
 
     private fun setupViewBinding() {
