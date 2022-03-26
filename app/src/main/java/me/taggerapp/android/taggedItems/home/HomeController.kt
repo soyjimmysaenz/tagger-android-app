@@ -1,7 +1,7 @@
 package me.taggerapp.android.taggedItems.home
 
-import me.taggerapp.android.taggedItems.GetTaggedItems
-import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.domain.GetTaggedItems
+import me.taggerapp.android.taggedItems.domain.TaggedItem
 
 class HomeController(
     private val getTaggedItems: GetTaggedItems

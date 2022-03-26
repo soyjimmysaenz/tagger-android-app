@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import me.taggerapp.android.databinding.ActivityHomeBinding
-import me.taggerapp.android.taggedItems.ModuleFactory
-import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.ModuleLocator
+import me.taggerapp.android.taggedItems.domain.TaggedItem
 
 class HomeActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         TaggedItemsListAdapter(::onTaggedItemSelected)
     }
     private val viewController: HomeController by lazy {
-        ModuleFactory.getHomeController()
+        ModuleLocator.getHomeController(this)
     }
 
     companion object {

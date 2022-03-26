@@ -2,7 +2,7 @@ package me.taggerapp.android.taggedItems.home
 
 import androidx.recyclerview.widget.RecyclerView
 import me.taggerapp.android.databinding.ItemTaggedItemBinding
-import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.domain.TaggedItem
 
 class TaggedItemViewHolder(
     private val binding: ItemTaggedItemBinding

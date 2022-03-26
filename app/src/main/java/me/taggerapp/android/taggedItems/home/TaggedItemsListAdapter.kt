@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import me.taggerapp.android.databinding.ItemTaggedItemBinding
-import me.taggerapp.android.taggedItems.TaggedItem
+import me.taggerapp.android.taggedItems.domain.TaggedItem
 
 class TaggedItemsListAdapter(
     private val itemSelectedListener: (TaggedItem) -> Unit
