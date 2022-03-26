@@ -11,6 +11,9 @@ interface TaggedItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertSync(entity: TaggedItemEntity)
 
+    @Insert
+    fun insertSync(entities: List<TaggedItemEntity>)
+
     @Query("SELECT * FROM tagged_items")
     fun getAllSync(): List<TaggedItemEntity>
 }

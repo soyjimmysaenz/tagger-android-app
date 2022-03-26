@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import me.taggerapp.android.core.data.database.daos.TaggedItemDao
 import me.taggerapp.android.core.data.database.entities.TaggedItemEntity
+import me.taggerapp.android.core.data.database.population.DefaultPopulator.populateWithSampleTaggedItems
+import java.util.concurrent.Executors
 
 interface AppDatabase {
     fun taggedItemDao(): TaggedItemDao
@@ -46,6 +49,23 @@ abstract class DefaultAppDatabase : RoomDatabase(), AppDatabase {
             )
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
+            .addCallback(object : RoomDatabase.Callback() {
+                override fun onCreate(db: SupportSQLiteDatabase) {
+                    super.onCreate(db)
+                    ioThread {
+                        populateWithSampleTaggedItems(getInstance(context))
+                    }
+                }
+            })
             .build()
     }
+}
+
+private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
+
+/**
+ * Utility method to run blocks on a dedicated background thread, used for io/database work.
+ */
+fun ioThread(f: () -> Unit) {
+    IO_EXECUTOR.execute(f)
 }
