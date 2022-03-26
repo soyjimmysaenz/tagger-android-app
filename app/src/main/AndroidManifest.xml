@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tagger">
-        <activity android:name=".signIn.StartActivity">
+        <activity
+            android:name=".signIn.StartActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,15 +23,18 @@
         </activity>
         <activity
             android:name=".signIn.SignUpActivity"
+            android:exported="false"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".taggedItems.home.HomeActivity" />
         <activity
             android:name=".taggedItems.details.SaveTaggedItemActivity"
+            android:exported="false"
             android:label="@string/save_item"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
-        <activity android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
-            android:exported="true"/>
+        <activity
+            android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
