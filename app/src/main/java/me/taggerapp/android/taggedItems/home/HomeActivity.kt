@@ -36,14 +36,10 @@ class HomeActivity : AppCompatActivity() {
         setup()
     }
 
-    override fun onResume() {
-        super.onResume()
-        requestItems()
-    }
-
     private fun setup() {
         setupViewBinding()
         setupViews()
+        requestItems()
     }
 
     private fun setupViewBinding() {
@@ -56,13 +52,22 @@ class HomeActivity : AppCompatActivity() {
             recyclerViewItems.adapter = taggedItemsAdapter
             recyclerViewItems.layoutManager = LinearLayoutManager(this@HomeActivity)
             recyclerViewItems.setHasFixedSize(true)
+
+            buttonAddItem.setOnClickListener { onButtonAddItemClicked() }
+        }
+    }
+
+    private fun onButtonAddItemClicked() {
+        lifecycleScope.launch {
+            viewController.addAnItem()
         }
     }
 
     private fun requestItems() {
-        lifecycleScope.launch {
-            val taggedItemModels = viewController.loadItems()
-            taggedItemsAdapter.update(taggedItemModels)
+        lifecycleScope.launchWhenCreated {
+            viewController.loadItems().collect { taggedItems ->
+                taggedItemsAdapter.update(taggedItems)
+            }
         }
     }
 

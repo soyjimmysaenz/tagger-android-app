@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import me.taggerapp.android.core.data.database.entities.TaggedItemEntity
 
 @Dao
@@ -16,4 +17,7 @@ interface TaggedItemDao {
 
     @Query("SELECT * FROM tagged_items")
     suspend fun getAll(): List<TaggedItemEntity>
+
+    @Query("SELECT * FROM tagged_items")
+    fun getAllAsFlow(): Flow<List<TaggedItemEntity>>
 }

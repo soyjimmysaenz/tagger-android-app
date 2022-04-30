@@ -6,4 +6,5 @@
     <string name="app_description">Con Tagger podés etiquetar tu vida, desde un lápiz hasta un viaje. Empecemos configurando tu PIN.</string>
     <string name="error_validating_pin">Por favor revisa el PIN e intenta nuevamente</string>
     <string name="registered">Registrado! 🚀</string>
+    <string name="add">Agregar Item</string>
 </resources>

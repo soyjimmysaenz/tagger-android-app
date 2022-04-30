@@ -1,5 +1,7 @@
 package me.taggerapp.android.taggedItems.data
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import me.taggerapp.android.core.data.database.daos.TaggedItemDao
 import me.taggerapp.android.taggedItems.domain.TaggedItem
 import me.taggerapp.android.taggedItems.domain.TaggedItemsRepository
@@ -13,6 +15,14 @@ class TaggedItemsRepositoryImpl(
         return taggedItemDao
             .getAll()
             .map { entity -> entity.toDomain() }
+    }
+
+    override fun getAllAsFlow(): Flow<List<TaggedItem>> {
+        return taggedItemDao
+            .getAllAsFlow()
+            .map { entities ->
+                entities.map { entity -> entity.toDomain() }
+            }
     }
 
     override suspend fun save(taggedItem: TaggedItem): Boolean {

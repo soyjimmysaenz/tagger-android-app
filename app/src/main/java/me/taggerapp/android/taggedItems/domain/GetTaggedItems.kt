@@ -1,12 +1,17 @@
 package me.taggerapp.android.taggedItems.domain
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
 class GetTaggedItems(private val taggedItemsRepository: TaggedItemsRepository) {
 
-    suspend operator fun invoke(): List<TaggedItem> {
+    operator fun invoke(): Flow<List<TaggedItem>> {
         return taggedItemsRepository
-            .getAll()
-            .sortedBy { item ->
-                item.title
+            .getAllAsFlow()
+            .map { taggedItems ->
+                taggedItems.sortedBy { item ->
+                    item.title
+                }
             }
     }
 }
